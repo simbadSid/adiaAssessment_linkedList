@@ -1,5 +1,5 @@
 /**
- * @brief This executable simulates a set of accesses (forward and backward) for each SimplyLinkedList implementation with different list sizes.
+ * @brief This executable evaluates a set of accesses (forward and backward) for each SimplyLinkedList implementation with different list sizes.
  * @details The scenario followed to access the list is set by defining one of the macros SCENARIO_<scenarioName>
  */
 
