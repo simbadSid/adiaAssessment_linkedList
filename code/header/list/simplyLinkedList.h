@@ -27,20 +27,21 @@ public:
     ~Node() = default;
 };
 
-void defaultTreatment(int element, unsigned index);
+void defaultTreatment(int element, unsigned long index);
 
 class SimplyLinkedList
 {
 protected:
-    Node *list;
+    Node *listHead;
     ListOrdering listOrdering = forward;
+    unsigned long size;
 
 public:
     virtual ~SimplyLinkedList() = default;
     /**
      * @details Transforms the input list in the current list-class
      */
-    void setList(std::list<int> *l);
+    virtual void setList(std::list<int> *l);
 
     /**
      * @details Remove all the elements of the list
@@ -54,19 +55,20 @@ public:
      * @param ordering indicates weather to walk through the list in a backward or forward manner.
      * @param treatment function that applies a user-defined treatment to its 2 inputs: an element of the list and its index.
      * @param keepListOrder boolean indicating weather or not the current ordering of the list might be changed.
+     * @returns the number of element that have been parsed.
      */
-    virtual void walk(
+    virtual unsigned long walk(
             ListOrdering ordering,
-            bool keepListOrder                  = false,
-            void (*treatment)(int, unsigned)    = defaultTreatment) = 0;
+            bool keepListOrder                      = false,
+            void (*treatment)(int, unsigned long)   = defaultTreatment) = 0;
 
     /**
      * @details check weather the current list (forward order) is equal to the input one.
      */
-    bool isEqual(std::list<int> *l);
+    virtual bool isEqual(std::list<int> *l);
 
-protected:
-    void invertList();
+    unsigned long getSize() ;
+
 };
 
 

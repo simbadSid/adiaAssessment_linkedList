@@ -46,7 +46,7 @@ set(                        SCENARIO_LIST                       onlyForward
                                                                 halfForwardHalfBackward
                                                                 randomForwardBackward)
 
-set(                        CMAKE_CXX_FLAGS                     "-O3 -Wall  -g") #-Werror -Wextra
+set(                        CMAKE_CXX_FLAGS                     "-O3 -Wall -g") #-Werror -Wextra
 SET(                        FLAG_PROD                           "")
 SET(                        FLAG_VERBOSE                        "-DLOG")
 SET(                        FLAG_TEST                           "-DLOG -DTEST")

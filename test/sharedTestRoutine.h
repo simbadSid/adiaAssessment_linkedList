@@ -18,42 +18,48 @@ void appendRandomList(unsigned size, std::list<int> *outputList)
 }
 
 
-bool simulateForEachSize(SimplyLinkedList* simplyLinkedList, std::string className, void (*scenarioFunction)(SimplyLinkedList*))
+bool simulateForEachSize(SimplyLinkedList* simplyLinkedList, std::string className, bool (*scenarioFunction)(SimplyLinkedList*))
 {
-    std::list<std::pair<SimplyLinkedList*, std::string> > l = {
-            std::pair<SimplyLinkedList*, std::string> (new SimplyLinkedList_0_orderRefactor(), "SimplyLinkedList_0_orderRefactor")
-    };
+    unsigned formerSize = 0;
+    std::list<int> *content = new std::list<int>();
 
-    // For each list class
-    for (const auto& c : l)
+    std::cout << std::endl << "Execution time (class: " << className << "): ";
+
+    // For each list size
+    for (const auto& size : SIZE_LIST)
     {
-        unsigned formerSize = 0;
-        std::list<int> *content = new std::list<int>();
+        assert(size >= formerSize);
 
-        std::cout << std::endl << "Execution time (class: " << className << "): ";
+        // Set the list to scan
+        appendRandomList(size - formerSize, content);
+        simplyLinkedList->setList(content);
 
-        // For each list size
-        for (const auto& size : SIZE_LIST)
+        // Scan the list
+        bool isCorrectlyParsed = scenarioFunction(simplyLinkedList);
+
+        // Case where the list has not been properly explored
+        if (!isCorrectlyParsed)
         {
-            assert(size >= formerSize);
-
-            // Set the list to scan
-            appendRandomList(size - formerSize, content);
-            simplyLinkedList->setList(content);
-
-            // Scan the list
-            scenarioFunction(simplyLinkedList);
-            if (!simplyLinkedList->isEqual(content))
-                return false;
-
-            //TODO test that all the element have been correctly visited
-
-            formerSize = size;
+            fprintf(stderr, "%s: not correctly parsed\n", __FILE_NAME__);
+            fflush(stderr);
+//            abort();
+            return false;
         }
-        std::cout << std::endl;
 
-        delete c.first;
+        // Case where the list has been corrupted
+        if (!simplyLinkedList->isEqual(content))
+        {
+            fprintf(stderr, "%s: list corrupted\n", __FILE_NAME__);
+            fflush(stderr);
+            abort();
+            return false;
+        }
+
+        //TODO test that all the element have been correctly visited
+
+        formerSize = size;
     }
+    std::cout << std::endl;
 
     return true;
 }

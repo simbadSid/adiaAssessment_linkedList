@@ -1,10 +1,10 @@
 #include "simplyLinkedList_0_orderRefactor.h"
 
 
-void SimplyLinkedList_0_orderRefactor::walk(
+unsigned long SimplyLinkedList_0_orderRefactor::walk(
         ListOrdering ordering,
         bool keepListOrder,
-        void (*treatment)(int, unsigned))
+        void (*treatment)(int, unsigned long))
 {
     log("%s: Walking through the current list\n", __FILE_NAME__);
 
@@ -18,8 +18,8 @@ void SimplyLinkedList_0_orderRefactor::walk(
     }
 
     // Walk through list
-    Node* current = this->list;
-    unsigned index = 0;
+    Node* current = this->listHead;
+    unsigned long index = 0;
     while (current != NULL)
     {
         treatment(current->elem, index);
@@ -30,4 +30,29 @@ void SimplyLinkedList_0_orderRefactor::walk(
     // Reset initial list if needed
     if (keepListOrder && hasBeenInverted)
         this->invertList();
+
+    return index;
 }
+
+void SimplyLinkedList_0_orderRefactor::invertList()
+{
+    log("%s: Inverting the current list\n", __FILE_NAME__);
+
+    Node* current = this->listHead;
+    Node *previous = NULL, *next = NULL;
+
+    while (current != NULL)
+    {
+        next = current->next;
+        current->next = previous;
+        previous = current;
+        current = next;
+    }
+    this->listHead = previous;
+
+    if (this->listOrdering == forward)
+        this->listOrdering = backward;
+    else
+        this->listOrdering = forward;
+}
+

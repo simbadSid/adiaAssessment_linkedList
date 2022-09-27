@@ -24,9 +24,9 @@
  */
 long long runScenario(SimplyLinkedList *simplyLinkedList);
 
-void onlyForward               (SimplyLinkedList *simplyLinkedList);
-void onlyBackward              (SimplyLinkedList *simplyLinkedList);
-void halfForwardHalfBackward   (SimplyLinkedList *simplyLinkedList);
-void randomForwardBackward     (SimplyLinkedList *simplyLinkedList);
+bool onlyForward               (SimplyLinkedList *simplyLinkedList);
+bool onlyBackward              (SimplyLinkedList *simplyLinkedList);
+bool halfForwardHalfBackward   (SimplyLinkedList *simplyLinkedList);
+bool randomForwardBackward     (SimplyLinkedList *simplyLinkedList);
 
 #endif //ADIAASSESSMENT_LINKEDLIST_SCENARIO_H

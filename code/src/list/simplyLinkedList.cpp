@@ -9,24 +9,27 @@ Node::Node(int elem)
     this->next = NULL;
 }
 
-void defaultTreatment(int element, unsigned index)
+void defaultTreatment(int element, unsigned long index)
 {
-    log("\t- Treating element[%u] %d\n", index, element);
+    log("\t- Treating element[%ul] %d\n", index, element);
 }
 
 void SimplyLinkedList::setList(std::list<int> *l)
 {
     log("%s: Instantiating a SimplyLinkedList object (Ox%p) of size %u\n", __FILE_NAME__, this, l->size());
+
+    this->listOrdering = forward;
+    this->size = l->size();
     if (l->empty())
     {
-        this->list = NULL;
+        this->listHead = NULL;
     }
     else
     {
         typename std::list<int>::const_iterator it = l->begin();
-        this->list = new Node(*it);
+        this->listHead = new Node(*it);
         ++it;
-        Node *currentNode = this->list;
+        Node *currentNode = this->listHead;
 
         for (; it != l->end(); ++it)
         {
@@ -41,17 +44,21 @@ void SimplyLinkedList::clearList()
 {
     log("%s: Cleaning a SimplyLinkedList object (Ox%p)\n", __FILE_NAME__, this);
 
-    while (this->list != NULL)
+    while (this->listHead != NULL)
     {
-        Node *tmp = this->list;
-        this->list = this->list->next;
+        Node *tmp = this->listHead;
+        this->listHead = this->listHead->next;
         delete tmp;
     }
+    this->size = 0;
 }
 
 bool SimplyLinkedList::isEqual(std::list<int> *l)
 {
-    Node *currentNode = this->list;
+    if (this->size != l->size())
+        return false;
+
+    Node *currentNode = this->listHead;
 
     if (this->listOrdering == forward)
     {
@@ -66,9 +73,10 @@ bool SimplyLinkedList::isEqual(std::list<int> *l)
     else
     {
         typename std::list<int>::reverse_iterator it;
-        for (it = l->rbegin(); it != l->rend(); ++it) {
+        for (it = l->rbegin(); it != l->rend(); ++it)
+        {
             if ((currentNode == NULL) || (*it != currentNode->elem))
-                return true;
+                return false;
             currentNode = currentNode->next;
         }
     }
@@ -76,24 +84,8 @@ bool SimplyLinkedList::isEqual(std::list<int> *l)
     return true;
 }
 
-void SimplyLinkedList::invertList()
+unsigned long SimplyLinkedList::getSize()
 {
-    log("%s: Inverting the current list\n", __FILE_NAME__);
-
-    Node* current = this->list;
-    Node *previous = NULL, *next = NULL;
-
-    while (current != NULL)
-    {
-        next = current->next;
-        current->next = previous;
-        previous = current;
-        current = next;
-    }
-    this->list = previous;
-
-    if (this->listOrdering == forward)
-        this->listOrdering = backward;
-    else
-        this->listOrdering = forward;
+    return this->size;
 }
+

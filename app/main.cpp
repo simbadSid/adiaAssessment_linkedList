@@ -1,9 +1,18 @@
+/**
+ * @brief This executable simulates a set of accesses (forward and backward) for each SimplyLinkedList implementation with different list sizes.
+ * @details The scenario followed to access the list is set by defining one of the macros SCENARIO_<scenarioName>
+ */
+
 #include "tools.h"
 #include "simplyLinkedList_0_orderRefactor.h"
+#include "simplyLinkedList_1_twoPointersInOne.h"
 #include "scenario.h"
 
-//std::list<int> SIZE_LIST = std::list<int>({1000000, 11000000, 21000000, 31000000, 41000000, 51000000, 61000000, 71000000, 81000000, 91000000});
-std::list<int> SIZE_LIST = std::list<int>({5, 6, 7});
+std::list<int> SIZE_LIST = std::list<int>({1000000, 11000000, 21000000, 31000000, 41000000, 51000000, 61000000, 71000000, 81000000, 91000000});
+//std::list<int> SIZE_LIST = std::list<int>({5, 6, 7});
+
+#define NB_EXPERIMENT 3
+
 
 void appendRandomList(unsigned size, std::list<int> *outputList)
 {
@@ -17,7 +26,8 @@ void appendRandomList(unsigned size, std::list<int> *outputList)
 int main()
 {
     std::list<std::pair<SimplyLinkedList*, std::string> > l = {
-            std::pair<SimplyLinkedList*, std::string> (new SimplyLinkedList_0_orderRefactor(), "SimplyLinkedList_0_orderRefactor")
+            std::pair<SimplyLinkedList*, std::string> (new SimplyLinkedList_0_orderRefactor(),      "SimplyLinkedList_0_orderRefactor"),
+            std::pair<SimplyLinkedList*, std::string> (new SimplyLinkedList_1_twoPointersInOne(),   "SimplyLinkedList_1_twoPointersInOne")
     };
 
     // For each list class
@@ -40,8 +50,10 @@ int main()
             simplyLinkedList->setList(content);
 
             // Scan the list
-            auto executionTime = runScenario(simplyLinkedList);
-            std::cout << executionTime << ", ";
+            auto executionTime = 0;
+            for (int experiment=0; experiment<NB_EXPERIMENT; ++experiment)
+                executionTime += runScenario(simplyLinkedList);
+            std::cout << executionTime/NB_EXPERIMENT << ", ";
             fflush(stdout);
             formerSize = size;
         }
