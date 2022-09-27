@@ -1,4 +1,4 @@
-# Simply-linked list with optimized bacward-exploration
+# Simply-linked list with optimized backward-exploration
 
 
 ## Proposed algorithms
@@ -34,14 +34,11 @@ Let us also assume that this function:
   ```
 
 
-
-
-
 ## Experimental benchmark
 
 <p float="left">
-  <img src="/resource/benchmark_0_orderRefactor.png"    width="500" />
-  <img src="/resource/benchmark_1_twoPointersInOne.png" width="500" /> 
+  <img src="/resource/benchmark_0_orderRefactor.png"    width="400" />
+  <img src="/resource/benchmark_1_twoPointersInOne.png" width="400" /> 
 </p>
 
 Each experimental result that is presented is the average time of 5 executions on the same input.
