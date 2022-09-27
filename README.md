@@ -1,6 +1,54 @@
 # Simply-linked list with optimized bacward-exploration
 
 
+## Proposed algorithms
+In this project, we propose two list implementations using a simply-linked list.
+Using these algorithms, we manage to perform both forward and backward list-exploration with a linear algorithmic complexity and no memory overhead.
+
+* __SimplyLinkedList_0_orderRefactor__ :
+When an exploration is required following a pattern that is not the current pattern of the list, then the list is reverted before it explored.
+* __SimplyLinkedList_1_twoPointersInOne__ :
+In this implementation we replace the "next" pointer of each node with a single value containing a combination of the addresses of the previous and the next nodes.
+Using this combination function, we are able to compute the next node of each node knowing its address and the address of its previous node.
+Similarly and with the same operation, we are able to compute the previous node of each node knowing its address and the address of its next node.
+<br />
+Let us call Merge() the function used to combine two addresses.
+Let us also assume that this function:
+  * is associative
+  * is commutative
+  * admits a neutral element (e.g. 0)
+  * insures that Merge(x, x) = 0 for eac address x
+
+  Consequently, knowing the addresses of:
+  * a given node at a position n (hence knowing Merge(n-1, n+1))
+  * the address of its predecessor (respectively successor) n-1 (respectively n+1)
+
+  we are able to compute the address of its successor (respectively predecessor) n+1 as follows:
+  ```
+  Merge(n, n-1) = Merge(Merge(n-1, n+1), n-1)
+                = Merge(Merge(n+1, n-1), n-1)
+                = Merge(n+1, Merge(n-1, n-1))
+                = Merge(n+1, 0)
+                = n+1
+  ```
+
+
+
+
+
+## Experimental benchmark
+
+<p float="left">
+  <img src="/resource/benchmark_0_orderRefactor.png"    width="100" />
+  <img src="/resource/benchmark_1_twoPointersInOne.png" width="100" /> 
+</p>
+
+Each experimental result that is presented is the average time of 5 executions on the same input.
+This experimental benchmark has been tested on an x86 machine implementing two 10-core Intel Xeon E5-2660v2 (2.2GHz) chips.
+A linux (3.16.7-4) operating system has been used based on the Debian kernel 3.16.7.
+The default kernel allocation policy (first touch) has been used to obtain all the presented results.
+The \textit{g++ 4.4.7} has been used to compile the code along with the -O3 option (maximum optimization level).
+
 ## Build and test
 This project uses the CMake framework.
 In order to build the project, we need to run the following command

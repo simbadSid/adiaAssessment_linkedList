@@ -1,19 +1,20 @@
 /**
  * @def SimplyLinkedList_1_twoPointersInOne
  * @details Keeps the parent simply-linked list.
- * Each node n keeps a fictive address = Merge(n-1, n+1) where the Merge function is an
- *     - Associative
- *     - Commutative
- *     - Has as a neutral element (e.g. 0)
- *     - Merge(x, x) = 0
- * Consequently, knowing the address of
- *     - A given node n (hence knowing Merge(n-1, n+1))
- *     - The address of its predecessor (respectively successor) n-1
+ * Each node n keeps a fictive address = Merge(n-1, n+1) where the Merge function:
+ *     - is associative
+ *     - is commutative
+ *     - has as a neutral element (e.g. 0)
+ *     - insures that Merge(x, x) = 0
+ * Consequently, knowing the addresses of:
+ *     - a given node at a position n (hence knowing Merge(n-1, n+1))
+ *     - the address of its predecessor (respectively successor) n-1
  *  we are able to compute the address of its successor (respectively predecessor) n+1 as follows
- *     Merge(Merge(n-1, n+1), n-1)  = Merge(Merge(n+1, n-1), n-1)
- *                                  = Merge(n+1, Merge(n-1, n-1))
- *                                  = Merge(n+1, 0)
- *                                  = n+1
+ *     Merge(n, n-1)    = Merge(Merge(n-1, n+1), n-1)
+ *                      = Merge(Merge(n+1, n-1), n-1)
+ *                      = Merge(n+1, Merge(n-1, n-1))
+ *                      = Merge(n+1, 0)
+ *                      = n+1
  * @author Riyane
  * @date 26/09/2022
  */

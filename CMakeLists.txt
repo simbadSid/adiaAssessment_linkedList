@@ -118,11 +118,11 @@ foreach(scenario ${SCENARIO_LIST})
     add_executable(${execName} ${libCustomList} ${execSourceFile})
     target_compile_options( ${execName} PUBLIC ${FLAG_PROD} -DSCENARIO_${scenario})
 
-#    SET(execName ${EXEC}_${scenario}_verbose)
-#    message(STATUS "\t\t\"${execName}\" (logs, routines for tests)")
-#    SET (execSourceFile ${DIR_APP}/${EXEC}${EXTENSION_SRC})
-#    add_executable(${execName} ${libCustomList} ${execSourceFile})
-#    target_compile_options( ${execName} PUBLIC ${FLAG_VERBOSE} -DSCENARIO_${scenario})
+    SET(execName ${EXEC}_${scenario}_verbose)
+    message(STATUS "\t\t\"${execName}\" (logs, routines for tests)")
+    SET (execSourceFile ${DIR_APP}/${EXEC}${EXTENSION_SRC})
+    add_executable(${execName} ${libCustomList} ${execSourceFile})
+    target_compile_options( ${execName} PUBLIC ${FLAG_VERBOSE} -DSCENARIO_${scenario})
 
 endforeach(scenario ${SCENARIO_LIST})
 
