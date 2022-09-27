@@ -19,5 +19,6 @@
     #define log(...) ((void)0)
 #endif
 
+void log_error(const char *format, ...);
 
 #endif //ADIAASSESSMENT_LINKEDLIST_TOOLS_H

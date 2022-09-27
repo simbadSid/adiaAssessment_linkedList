@@ -49,7 +49,7 @@ set(                        SCENARIO_LIST                       onlyForward
 set(                        CMAKE_CXX_FLAGS                     "-O3 -Wall -g") #-Werror -Wextra
 SET(                        FLAG_PROD                           "")
 SET(                        FLAG_VERBOSE                        "-DLOG")
-SET(                        FLAG_TEST                           "-DLOG -DTEST")
+SET(                        FLAG_TEST                           "-DTEST -DLOG") # TODO pb: only the first flag is considered
 
 
 
@@ -118,11 +118,11 @@ foreach(scenario ${SCENARIO_LIST})
     add_executable(${execName} ${libCustomList} ${execSourceFile})
     target_compile_options( ${execName} PUBLIC ${FLAG_PROD} -DSCENARIO_${scenario})
 
-    SET(execName ${EXEC}_${scenario}_verbose)
-    message(STATUS "\t\t\"${execName}\" (logs, routines for tests)")
-    SET (execSourceFile ${DIR_APP}/${EXEC}${EXTENSION_SRC})
-    add_executable(${execName} ${libCustomList} ${execSourceFile})
-    target_compile_options( ${execName} PUBLIC ${FLAG_VERBOSE} -DSCENARIO_${scenario})
+#    SET(execName ${EXEC}_${scenario}_verbose)
+#    message(STATUS "\t\t\"${execName}\" (logs, routines for tests)")
+#    SET (execSourceFile ${DIR_APP}/${EXEC}${EXTENSION_SRC})
+#    add_executable(${execName} ${libCustomList} ${execSourceFile})
+#    target_compile_options( ${execName} PUBLIC ${FLAG_VERBOSE} -DSCENARIO_${scenario})
 
 endforeach(scenario ${SCENARIO_LIST})
 
@@ -140,7 +140,7 @@ foreach(execTest ${testList})
     get_filename_component(testName ${execTest} NAME_WE)
     add_executable(${testName} ${libCustomList} ${execTest})
     target_compile_options( ${testName} PUBLIC ${FLAG_TEST})
-   add_test(NAME ${testName} COMMAND ${testName})
+    add_test(NAME ${testName} COMMAND ${testName})
 endforeach(execTest ${testList})
 
 

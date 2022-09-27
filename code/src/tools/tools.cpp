@@ -14,3 +14,14 @@ void log(const char *format, ...)
     fflush (stdout);
 }
 #endif
+
+void log_error(const char *format, ...)
+{
+    fprintf(stderr, "***********************\n");
+
+    va_list ap;
+    va_start (ap, format);
+    vfprintf (stderr, format, ap);
+    va_end (ap);
+    fflush (stderr);
+}

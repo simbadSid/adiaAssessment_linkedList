@@ -40,22 +40,16 @@ bool simulateForEachSize(SimplyLinkedList* simplyLinkedList, std::string classNa
         // Case where the list has not been properly explored
         if (!isCorrectlyParsed)
         {
-            fprintf(stderr, "%s: not correctly parsed\n", __FILE_NAME__);
-            fflush(stderr);
-//            abort();
+            log_error("%s: not correctly parsed\n", __FILE_NAME__);
             return false;
         }
 
         // Case where the list has been corrupted
         if (!simplyLinkedList->isEqual(content))
         {
-            fprintf(stderr, "%s: list corrupted\n", __FILE_NAME__);
-            fflush(stderr);
-            abort();
+            log_error("%s: list corrupted\n", __FILE_NAME__);
             return false;
         }
-
-        //TODO test that all the element have been correctly visited
 
         formerSize = size;
     }
