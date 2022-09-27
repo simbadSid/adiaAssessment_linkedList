@@ -35,10 +35,18 @@ Let us also assume that this function:
 
 
 ## Experimental benchmark
-
+In the following figure, we present the experimental execution time of each algorithm in each considered scenario. 
 <p float="left">
   <img src="/resource/benchmark_0_orderRefactor.png"    width="400" />
   <img src="/resource/benchmark_1_twoPointersInOne.png" width="400" /> 
+</p>
+
+We also compare the performance of the two algorithms per considered scenario
+<p float="left">
+  <img src="/resource/benchmark_onlyForward.png"    width="400" />
+  <img src="/resource/benchmark_onlyBackward.png" width="400" /> 
+  <img src="/resource/benchmark_onlyBackward.png"    width="400" />
+  <img src="/resource/benchmark_randomForwardBackward.png" width="400" /> 
 </p>
 
 Each experimental result that is presented is the average time of 5 executions on the same input.
