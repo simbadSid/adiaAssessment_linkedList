@@ -5,13 +5,14 @@
 In this project, we propose two list implementations using a simply-linked list.
 Using these algorithms, we manage to perform both forward and backward list-exploration with a linear algorithmic complexity and no memory overhead.
 
-* __SimplyLinkedList_0_orderRefactor__ :
+### Algorithm "SimplyLinkedList_0_orderRefactor":
 When an exploration is required following a pattern that is not the current pattern of the list, then the list is reverted before it explored.
-* __SimplyLinkedList_1_twoPointersInOne__ :
+
+### Algorithm "SimplyLinkedList_1_twoPointersInOne":
 In this implementation we replace the "next" pointer of each node with a single value containing a combination of the addresses of the previous and the next nodes.
 Using this combination function, we are able to compute the next node of each node knowing its address and the address of its previous node.
 Similarly and with the same operation, we are able to compute the previous node of each node knowing its address and the address of its next node.
-<br />
+
 Let us call Merge() the function used to combine two addresses.
 Let us also assume that this function:
   * is associative
@@ -39,8 +40,8 @@ Let us also assume that this function:
 ## Experimental benchmark
 
 <p float="left">
-  <img src="/resource/benchmark_0_orderRefactor.png"    width="100" />
-  <img src="/resource/benchmark_1_twoPointersInOne.png" width="100" /> 
+  <img src="/resource/benchmark_0_orderRefactor.png"    width="500" />
+  <img src="/resource/benchmark_1_twoPointersInOne.png" width="500" /> 
 </p>
 
 Each experimental result that is presented is the average time of 5 executions on the same input.
