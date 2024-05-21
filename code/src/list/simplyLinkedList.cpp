@@ -16,7 +16,7 @@ void defaultTreatment(int element, unsigned long index)
 
 void SimplyLinkedList::setList(std::list<int> *l)
 {
-    log("%s: Instantiating a SimplyLinkedList object (Ox%p) of size %u\n", __FILE_NAME__, this, l->size());
+    log("%s: Instantiating a SimplyLinkedList object (Ox%p) of size %u\n", __FILE__, this, l->size());
 
     this->listOrdering = forward;
     this->size = l->size();
@@ -42,7 +42,7 @@ void SimplyLinkedList::setList(std::list<int> *l)
 
 void SimplyLinkedList::clearList()
 {
-    log("%s: Cleaning a SimplyLinkedList object (Ox%p)\n", __FILE_NAME__, this);
+    log("%s: Cleaning a SimplyLinkedList object (Ox%p)\n", __FILE__, this);
 
     while (this->listHead != NULL)
     {

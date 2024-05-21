@@ -40,14 +40,14 @@ bool simulateForEachSize(SimplyLinkedList* simplyLinkedList, std::string classNa
         // Case where the list has not been properly explored
         if (!isCorrectlyParsed)
         {
-            log_error("%s: not correctly parsed\n", __FILE_NAME__);
+            log_error("%s: not correctly parsed\n", __FILE__);
             return false;
         }
 
         // Case where the list has been corrupted
         if (!simplyLinkedList->isEqual(content))
         {
-            log_error("%s: list corrupted\n", __FILE_NAME__);
+            log_error("%s: list corrupted\n", __FILE__);
             return false;
         }
 

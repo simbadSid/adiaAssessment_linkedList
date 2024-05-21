@@ -19,7 +19,7 @@ long long runScenario(SimplyLinkedList *simplyLinkedList)
         randomForwardBackward(simplyLinkedList);
 
     #else
-        fprintf(stderr, "%s: no scenario has been defined (you need to define the macros SCENARIO_<scenarioName>)\n", __FILE_NAME__);
+        fprintf(stderr, "%s: no scenario has been defined (you need to define the macros SCENARIO_<scenarioName>)\n", __FILE__);
         fflush(stderr);
         abort();
     #endif
@@ -40,7 +40,7 @@ long long runScenario(SimplyLinkedList *simplyLinkedList)
  */
 bool onlyForward(SimplyLinkedList *simplyLinkedList)
 {
-    log("%s: Execute scenario \"onlyForward\"\n", __FILE_NAME__);
+    log("%s: Execute scenario \"onlyForward\"\n", __FILE__);
 
     for (unsigned walk=0; walk<NB_WALKS; ++walk)
     {
@@ -67,7 +67,7 @@ bool onlyForward(SimplyLinkedList *simplyLinkedList)
  */
 bool onlyBackward(SimplyLinkedList *simplyLinkedList)
 {
-    log("%s: Execute scenario \"onlyBackward\"\n", __FILE_NAME__);
+    log("%s: Execute scenario \"onlyBackward\"\n", __FILE__);
 
     for (unsigned walk=0; walk<NB_WALKS; ++walk)
     {
@@ -94,7 +94,7 @@ bool onlyBackward(SimplyLinkedList *simplyLinkedList)
  */
 bool halfForwardHalfBackward(SimplyLinkedList *simplyLinkedList)
 {
-    log("%s: Execute scenario \"halfForwardHalfBackward\"\n", __FILE_NAME__);
+    log("%s: Execute scenario \"halfForwardHalfBackward\"\n", __FILE__);
 
     for (unsigned walk=0; walk<NB_WALKS/2; ++walk)
     {
@@ -132,7 +132,7 @@ bool halfForwardHalfBackward(SimplyLinkedList *simplyLinkedList)
  */
 bool randomForwardBackward(SimplyLinkedList *simplyLinkedList)
 {
-    log("%s: Execute scenario \"randomForwardBackward\"\n", __FILE_NAME__);
+    log("%s: Execute scenario \"randomForwardBackward\"\n", __FILE__);
 
     for (unsigned walk=0; walk<NB_WALKS; ++walk)
     {

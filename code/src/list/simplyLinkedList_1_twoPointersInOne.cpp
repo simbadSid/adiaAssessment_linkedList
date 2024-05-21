@@ -3,7 +3,7 @@
 
 void SimplyLinkedList_1_twoPointersInOne::setList(std::list<int> *l)
 {
-    log("%s: Instantiating a SimplyLinkedList_1_twoPointersInOne object (Ox%p) of size %u\n", __FILE_NAME__, this, l->size());
+    log("%s: Instantiating a SimplyLinkedList_1_twoPointersInOne object (Ox%p) of size %u\n", __FILE__, this, l->size());
 
     this->listOrdering = forward;
     this->size = l->size();

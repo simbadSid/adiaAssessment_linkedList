@@ -6,7 +6,7 @@ unsigned long SimplyLinkedList_0_orderRefactor::walk(
         bool keepListOrder,
         void (*treatment)(int, unsigned long))
 {
-    log("%s: Walking through the current list\n", __FILE_NAME__);
+    log("%s: Walking through the current list\n", __FILE__);
 
     bool hasBeenInverted = false;
 
@@ -36,7 +36,7 @@ unsigned long SimplyLinkedList_0_orderRefactor::walk(
 
 void SimplyLinkedList_0_orderRefactor::invertList()
 {
-    log("%s: Inverting the current list\n", __FILE_NAME__);
+    log("%s: Inverting the current list\n", __FILE__);
 
     Node* current = this->listHead;
     Node *previous = NULL, *next = NULL;
