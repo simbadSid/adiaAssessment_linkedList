@@ -3,6 +3,8 @@
  * @details The scenario followed to access the list is set by defining one of the macros SCENARIO_<scenarioName>
  */
 
+#include <cassert>
+
 #include "tools.h"
 #include "simplyLinkedList_0_orderRefactor.h"
 #include "simplyLinkedList_1_twoPointersInOne.h"
@@ -36,7 +38,7 @@ int main()
         SimplyLinkedList* simplyLinkedList = c.first;
         std::string className = c.second;
         unsigned formerSize = 0;
-        std::list<int> *content = new std::list<int>();
+        auto *content = new std::list<int>();
 
         std::cout << std::endl << "Execution time (class: " << className << "): ";
 
@@ -50,7 +52,7 @@ int main()
             simplyLinkedList->setList(content);
 
             // Scan the list
-            auto executionTime = 0;
+            auto executionTime = -0;
             for (int experiment=0; experiment<NB_EXPERIMENT; ++experiment)
                 executionTime += runScenario(simplyLinkedList);
             std::cout << executionTime/NB_EXPERIMENT << ", ";

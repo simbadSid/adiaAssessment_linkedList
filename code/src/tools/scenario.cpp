@@ -28,7 +28,7 @@ long long runScenario(SimplyLinkedList *simplyLinkedList)
     std::clock_t endTime = std::clock();
     
     // Calculate the elapsed time in milliseconds
-    double executionTime = 1000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
+    long long executionTime = 1000 * (endTime - startTime) / CLOCKS_PER_SEC;
 
     return executionTime;
 }
