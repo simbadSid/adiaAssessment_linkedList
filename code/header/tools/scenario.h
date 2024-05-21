@@ -9,7 +9,7 @@
 #ifndef ADIAASSESSMENT_LINKEDLIST_SCENARIO_H
 #define ADIAASSESSMENT_LINKEDLIST_SCENARIO_H
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include "simplyLinkedList.h"
 #include "tools.h"
