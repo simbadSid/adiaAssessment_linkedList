@@ -10,6 +10,9 @@
 #define ADIAASSESSMENT_LINKEDLIST_SCENARIO_H
 
 #include <cstdlib>
+#include <ctime>
+#include <iostream>
+
 
 #include "simplyLinkedList.h"
 #include "tools.h"
