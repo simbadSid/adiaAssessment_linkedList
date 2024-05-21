@@ -1,3 +1,5 @@
+#include <cassert>
+
 #include "tools.h"
 #include "simplyLinkedList_0_orderRefactor.h"
 #include "scenario.h"
