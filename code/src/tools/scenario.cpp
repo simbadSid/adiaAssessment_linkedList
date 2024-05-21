@@ -3,8 +3,9 @@
 
 long long runScenario(SimplyLinkedList *simplyLinkedList)
 {
-    auto startTime = std::chrono::system_clock::now();
-
+    // Record the start time
+    std::clock_t startTime = std::clock();
+    
     #ifdef SCENARIO_onlyForward
         onlyForward(simplyLinkedList);
 
@@ -23,8 +24,11 @@ long long runScenario(SimplyLinkedList *simplyLinkedList)
         abort();
     #endif
 
-    auto endTime = std::chrono::system_clock::now();
-    auto executionTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime-startTime).count();
+    // Record the end time
+    std::clock_t endTime = std::clock();
+    
+    // Calculate the elapsed time in milliseconds
+    double executionTime = 1000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
 
     return executionTime;
 }
